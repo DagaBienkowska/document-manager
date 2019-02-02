@@ -12,11 +12,11 @@ public class Comment {
     private String content;
 
     @ManyToOne
-    @MapsId("userId")
+    @MapsId
     private User user;
 
     @ManyToOne
-    @MapsId("docId")
+    @MapsId
     private Document document;
 
     public Comment(String content) {

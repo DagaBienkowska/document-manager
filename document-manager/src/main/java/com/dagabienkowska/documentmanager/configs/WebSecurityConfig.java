@@ -1,8 +1,10 @@
 package com.dagabienkowska.documentmanager.configs;
 
+import com.dagabienkowska.documentmanager.services.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -29,8 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/register").permitAll()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
-                    .and()
+                .formLogin().loginPage("/login").permitAll().and()
                 .logout().permitAll()
                 .and()
                 .headers().frameOptions().disable()
@@ -45,5 +46,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean(name = "passwordEncoder")
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean(name = "authenticationManager")
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    @Bean(name = "userDetailService")
+    public UserDetailsService userDetailsService(){
+        return new UserDetailServiceImpl();
     }
 }

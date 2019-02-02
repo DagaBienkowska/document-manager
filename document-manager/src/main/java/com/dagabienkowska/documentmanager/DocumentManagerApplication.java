@@ -38,6 +38,7 @@ public class DocumentManagerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		/*
 		User user = new User("Frog2", "qwee", "Frog", "McFrogger");
 		Set<Role> roles = new HashSet<>();
 		roles.add(roleRepository.findRoleByName("User"));
@@ -54,6 +55,7 @@ public class DocumentManagerApplication implements CommandLineRunner {
 		document.setUser(user);
 
 		documentRepository.save(document);
+		*/
 
 	}
 }
