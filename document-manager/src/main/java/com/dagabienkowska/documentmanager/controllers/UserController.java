@@ -16,12 +16,12 @@ public class UserController {
 
     private final UserService userService;
     private final SecurityService securityService;
-    private final UserValidator userValidator;
+    //private final UserValidator userValidator;
 
-    public UserController(UserService userRepository1, SecurityService securityService, UserValidator userValidator) {
+    public UserController(UserService userRepository1, SecurityService securityService) {
         this.userService = userRepository1;
         this.securityService = securityService;
-        this.userValidator = userValidator;
+
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -32,11 +32,13 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
+        /*
         userValidator.validate("userForm", bindingResult);
 
         if (bindingResult.hasErrors()){
             return "registration";
         }
+        */
         userService.saveUser(userForm);
         securityService.login(userForm.getUsername(), userForm.getPassword());
 
