@@ -3,6 +3,7 @@ package com.dagabienkowska.documentmanager.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "comments")
 public class Comment {
 
     @Id
@@ -11,11 +12,11 @@ public class Comment {
     private String content;
 
     @ManyToOne
-    @MapsId
+    @MapsId("userId")
     private User user;
 
     @ManyToOne
-    @MapsId
+    @MapsId("docId")
     private Document document;
 
     public Comment(String content) {

@@ -7,6 +7,7 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "documents")
 public class Document {
 
     @Id
@@ -18,7 +19,7 @@ public class Document {
     private Date modificationDate;
 
     @ManyToOne
-    @MapsId
+    @MapsId("userId")
     private User user;
 
     @OneToMany(mappedBy = "document")

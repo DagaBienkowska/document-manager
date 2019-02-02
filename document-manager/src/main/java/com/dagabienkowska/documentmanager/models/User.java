@@ -13,16 +13,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
 
-    @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
     private String password;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
     private String surname;
 
     @ManyToMany
@@ -33,10 +29,10 @@ public class User {
 
     private String status;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Document> documents;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Comment> commnets;
 
     public User() {
