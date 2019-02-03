@@ -2,6 +2,7 @@ package com.dagabienkowska.documentmanager.models;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class Document {
     private long docId;
     private String fileName;
     private String description;
-    private Date createtionDate;
-    private Date modificationDate;
+    private Timestamp createtionDate;
+    private Timestamp modificationDate;
 
     @ManyToOne
     @MapsId
@@ -62,7 +63,7 @@ public class Document {
         return createtionDate;
     }
 
-    public void setCreatetionDate(Date createtionDate) {
+    public void setCreatetionDate(Timestamp createtionDate) {
         this.createtionDate = createtionDate;
     }
 
@@ -70,7 +71,7 @@ public class Document {
         return modificationDate;
     }
 
-    public void setModificationDate(Date modificationDate) {
+    public void setModificationDate(Timestamp modificationDate) {
         this.modificationDate = modificationDate;
     }
 
