@@ -40,7 +40,7 @@ public class UserValidator implements Validator {
         if (user.getPassword().length() < 8 || user.getPassword().length() > 20){
             errors.rejectValue("password", "Size.userForm.password");
         }
-
+/*
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "NotEmpty");
 
         if (user.getName().length() < 3 || user.getName().length() > 25){
@@ -52,7 +52,7 @@ public class UserValidator implements Validator {
         if (user.getSurname().length() < 3 || user.getSurname().length() > 50){
             errors.rejectValue("surname", "Size.userForm.surname");
         }
-
+*/
     }
 
 }

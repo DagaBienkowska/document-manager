@@ -16,8 +16,8 @@
     </c:if>
 
     <ul>
-        <li>Add new file</li>
-        <li></li>
+        <li><a href="${contextPath}/addFile">Add new file</a></li>
+        <li>Show Your files</li>
     </ul>
 </body>
 </html>
