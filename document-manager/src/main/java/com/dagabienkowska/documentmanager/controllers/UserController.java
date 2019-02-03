@@ -1,6 +1,6 @@
 package com.dagabienkowska.documentmanager.controllers;
 
-import com.dagabienkowska.documentmanager.UserValidator;
+import com.dagabienkowska.documentmanager.components.UserValidator;
 import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.services.SecurityService;
 import com.dagabienkowska.documentmanager.services.UserService;
@@ -16,13 +16,16 @@ public class UserController {
 
     private final UserService userService;
     private final SecurityService securityService;
-    //private final UserValidator userValidator;
+    private final UserValidator userValidator;
 
-    public UserController(UserService userRepository1, SecurityService securityService) {
-        this.userService = userRepository1;
+    public UserController(UserService userService, SecurityService securityService, UserValidator userValidator) {
+        this.userService = userService;
         this.securityService = securityService;
-
+        this.userValidator = userValidator;
     }
+
+
+}
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model){
@@ -32,13 +35,13 @@ public class UserController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model){
-        /*
+
         userValidator.validate("userForm", bindingResult);
 
         if (bindingResult.hasErrors()){
             return "registration";
         }
-        */
+
         userService.saveUser(userForm);
         securityService.login(userForm.getUsername(), userForm.getPassword());
 

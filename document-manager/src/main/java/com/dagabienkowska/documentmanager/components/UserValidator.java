@@ -1,4 +1,4 @@
-package com.dagabienkowska.documentmanager;
+package com.dagabienkowska.documentmanager.components;
 
 import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.services.UserService;
@@ -17,7 +17,7 @@ public class UserValidator implements Validator {
     }
 
     @Override
-    public boolean supports(Class<?> aClass) {
+    public boolean supports(Class aClass) {
         return User.class.equals(aClass);
     }
 
@@ -52,5 +52,7 @@ public class UserValidator implements Validator {
         if (user.getSurname().length() < 3 || user.getSurname().length() > 50){
             errors.rejectValue("surname", "Size.userForm.surname");
         }
+
     }
+
 }

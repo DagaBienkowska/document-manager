@@ -14,5 +14,10 @@
 
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> </h2>
     </c:if>
+
+    <ul>
+        <li>Add new file</li>
+        <li></li>
+    </ul>
 </body>
 </html>
