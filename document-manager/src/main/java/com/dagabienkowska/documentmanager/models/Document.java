@@ -20,7 +20,7 @@ public class Document {
     private Timestamp modificationDate;
 
     @ManyToOne
-    @MapsId
+    @MapsId("userId")
     private User user;
 
     @OneToMany(mappedBy = "document")

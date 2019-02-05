@@ -32,7 +32,7 @@ public class User {
     @OneToMany
     private List<Document> documents;
 
-    @OneToMany
+    @OneToMany(mappedBy = "content")
     private List<Comment> commnets;
 
     public User() {

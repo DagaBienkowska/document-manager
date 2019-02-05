@@ -10,14 +10,12 @@ import java.sql.Timestamp;
 @Service
 public class DocumentServiceImpl implements DocumentService{
 
-    //private final UserRepository userRepository;
+    private final UserRepository userRepository;
     private final DocumentRepository documentRepository;
-    private final SecurityService securityService;
 
-    public DocumentServiceImpl(/*UserRepository userRepository,*/ DocumentRepository documentRepository, SecurityService securityService) {
-        //this.userRepository = userRepository;
+    public DocumentServiceImpl(UserRepository userRepository, DocumentRepository documentRepository) {
+        this.userRepository = userRepository;
         this.documentRepository = documentRepository;
-        this.securityService = securityService;
     }
 
     @Override
@@ -25,10 +23,6 @@ public class DocumentServiceImpl implements DocumentService{
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         document.setCreatetionDate(timestamp);
         document.setModificationDate(timestamp);
-
-        String username = securityService.findLoggedInUsername();
-        //Long userId = userRepository.findByUsername(username).getUserId();
-        //document.setDocId(userId);
 
         documentRepository.save(document);
     }

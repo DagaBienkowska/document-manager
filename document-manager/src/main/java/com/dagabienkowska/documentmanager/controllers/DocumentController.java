@@ -2,6 +2,7 @@ package com.dagabienkowska.documentmanager.controllers;
 
 import com.dagabienkowska.documentmanager.components.DocumentValidator;
 import com.dagabienkowska.documentmanager.models.Document;
+import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.services.DocumentService;
 import com.dagabienkowska.documentmanager.services.SecurityService;
 import com.dagabienkowska.documentmanager.services.UserService;
@@ -12,17 +13,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
+
 @Controller
 public class DocumentController {
 
     private final UserService userService;
     private final DocumentService documentService;
     private final DocumentValidator documentValidator;
+    private final SecurityService securityService;
 
-    public DocumentController(UserService userService, DocumentService documentService, DocumentValidator documentValidator) {
+    public DocumentController(UserService userService, DocumentService documentService, DocumentValidator documentValidator, SecurityService securityService) {
         this.userService = userService;
         this.documentService = documentService;
         this.documentValidator = documentValidator;
+        this.securityService = securityService;
     }
 
 
@@ -32,7 +37,8 @@ public class DocumentController {
         return "addFile";
     }
     @RequestMapping(value = "/addFile", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("documentForm") Document documentForm, BindingResult bindingResult, Model model){
+    public String addFile(@ModelAttribute("documentForm") Document documentForm, BindingResult bindingResult, Model model,
+                          Principal principal){
 
         documentValidator.validate(documentForm, bindingResult);
 
@@ -40,6 +46,9 @@ public class DocumentController {
             return "addFile";
         }
 
+        String username = principal.getName();
+        User user = userService.findByUsername(username);
+        documentForm.setUser(user);
         documentService.addDocument(documentForm);
 
         return "redirect:/welcome";

@@ -38,8 +38,9 @@ public class DocumentManagerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		/*
-		User user = new User("Frog2", "qwee", "Frog", "McFrogger");
+
+
+		User user = new User("froggy", "qazwsxedc", "Frog", "McFrogger");
 		Set<Role> roles = new HashSet<>();
 		roles.add(roleRepository.findRoleByName("User"));
 		roles.add(roleRepository.findRoleByName("Moderator"));
@@ -47,7 +48,8 @@ public class DocumentManagerApplication implements CommandLineRunner {
 		user.setRoles(roles);
 
 		user.setStatus("active");
-		Document document = new Document("Żyrafy wchodzą do szafy", "Bo mogą");
+		userRepository.save(user);
+		/*Document document = new Document("Żyrafy wchodzą do szafy", "Bo mogą");
 		Comment comment = new Comment("Jakiś komentarz");
 		List<Comment> comments = new ArrayList<>();
 		comments.add(comment);
