@@ -8,7 +8,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -16,6 +19,8 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+
+    private static final Logger LOGGER = Logger.getLogger(UserServiceImpl.class.getName());
 
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
@@ -32,6 +37,7 @@ public class UserServiceImpl implements UserService{
         userRole.add(roleRepository.findRoleByName("User"));
         user.setRoles(userRole);
         userRepository.save(user);
+        LOGGER.log(Level.INFO, "Created user");
     }
 
     @Override
@@ -39,8 +45,12 @@ public class UserServiceImpl implements UserService{
         return userRepository.findByUsername(username);
     }
 
-
-
+    @Override
+    public List<User> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        LOGGER.log(Level.INFO, "Fetched all users");
+        return users;
+    }
 
 
 }

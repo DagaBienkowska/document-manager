@@ -18,6 +18,7 @@
     <ul>
         <li><a href="${contextPath}/addFile">Add new file</a></li>
         <li>Show Your files</li>
+        <li><a href="${contextPath}/allUsers">Show all users</a></li>
     </ul>
 </body>
 </html>

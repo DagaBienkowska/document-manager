@@ -117,4 +117,15 @@ public class User {
         this.commnets = commnets;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

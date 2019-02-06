@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Controller
 public class DocumentController {
@@ -22,6 +24,7 @@ public class DocumentController {
     private final DocumentService documentService;
     private final DocumentValidator documentValidator;
     private final SecurityService securityService;
+    private static final Logger LOGGER = Logger.getLogger(DocumentController.class.getName());
 
     public DocumentController(UserService userService, DocumentService documentService, DocumentValidator documentValidator, SecurityService securityService) {
         this.userService = userService;
@@ -47,8 +50,11 @@ public class DocumentController {
         }
 
         String username = principal.getName();
+        LOGGER.log(Level.INFO, "got username " + username);
         User user = userService.findByUsername(username);
         documentForm.setUser(user);
+        LOGGER.log(Level.INFO, "got user " + user.toString());
+        LOGGER.log(Level.INFO, "cos" + documentForm.toString());
         documentService.addDocument(documentForm);
 
         return "redirect:/welcome";

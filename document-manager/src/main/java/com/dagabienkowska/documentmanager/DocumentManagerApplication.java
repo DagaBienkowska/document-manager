@@ -1,19 +1,17 @@
 package com.dagabienkowska.documentmanager;
 
-import com.dagabienkowska.documentmanager.models.Comment;
-import com.dagabienkowska.documentmanager.models.Document;
 import com.dagabienkowska.documentmanager.models.Role;
 import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.repository.CommentRepository;
 import com.dagabienkowska.documentmanager.repository.DocumentRepository;
 import com.dagabienkowska.documentmanager.repository.RoleRepository;
 import com.dagabienkowska.documentmanager.repository.UserRepository;
+import com.dagabienkowska.documentmanager.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.util.ArrayList;
+
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -23,12 +21,14 @@ public class DocumentManagerApplication implements CommandLineRunner {
 	private final DocumentRepository documentRepository;
 	private final CommentRepository commentRepository;
 	private final RoleRepository roleRepository;
+	private final UserService userService;
 
-	public DocumentManagerApplication(UserRepository userRepository, DocumentRepository documentRepository, CommentRepository commentRepository, RoleRepository roleRepository) {
+	public DocumentManagerApplication(UserRepository userRepository, DocumentRepository documentRepository, CommentRepository commentRepository, RoleRepository roleRepository, UserService userService) {
 		this.userRepository = userRepository;
 		this.documentRepository = documentRepository;
 		this.commentRepository = commentRepository;
 		this.roleRepository = roleRepository;
+		this.userService = userService;
 	}
 
 	public static void main(String[] args) {
@@ -40,7 +40,8 @@ public class DocumentManagerApplication implements CommandLineRunner {
 
 
 
-		User user = new User("froggy", "qazwsxedc", "Frog", "McFrogger");
+		User user = new User("froggy", "$2a$10$dNlfJy12mtYW6x9/1lQu5u0mAulVjQQzffkoqwvslqeM3OLGww.F.",
+				"Frog", "McFrogger");
 		Set<Role> roles = new HashSet<>();
 		roles.add(roleRepository.findRoleByName("User"));
 		roles.add(roleRepository.findRoleByName("Moderator"));
@@ -49,15 +50,8 @@ public class DocumentManagerApplication implements CommandLineRunner {
 
 		user.setStatus("active");
 		userRepository.save(user);
-		/*Document document = new Document("Żyrafy wchodzą do szafy", "Bo mogą");
-		Comment comment = new Comment("Jakiś komentarz");
-		List<Comment> comments = new ArrayList<>();
-		comments.add(comment);
-		document.setComments(comments);
-		document.setUser(user);
 
-		documentRepository.save(document);
-		*/
+		System.out.println(userService.getAllUsers().toString());
 
 	}
 }
