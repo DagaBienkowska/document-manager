@@ -1,5 +1,6 @@
 package com.dagabienkowska.documentmanager.services;
 
+import com.dagabienkowska.documentmanager.models.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,11 +21,16 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public String findLoggedInUsername() {
-        Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if(userDetails instanceof UserDetails){
-            return ((UserDetails) userDetails).getUsername();
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails)principal).getUsername();
+            return username;
+        } else {
+            String username = principal.toString();
+            return username;
         }
-        return null;
+
     }
 
     public void login(String username, String password){
@@ -38,4 +44,5 @@ public class SecurityServiceImpl implements SecurityService {
             SecurityContextHolder.getContext().setAuthentication(userAuthentication);
         }
     }
+
 }

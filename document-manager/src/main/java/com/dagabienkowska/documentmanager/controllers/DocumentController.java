@@ -48,13 +48,14 @@ public class DocumentController {
         if (bindingResult.hasErrors()){
             return "addFile";
         }
-
+/*
         String username = principal.getName();
         LOGGER.log(Level.INFO, "got username " + username);
         User user = userService.findByUsername(username);
-        documentForm.setUser(user);
         LOGGER.log(Level.INFO, "got user " + user.toString());
         LOGGER.log(Level.INFO, "cos" + documentForm.toString());
+        documentForm.setCreator(user);
+        */
         documentService.addDocument(documentForm);
 
         return "redirect:/welcome";

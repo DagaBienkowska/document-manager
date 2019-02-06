@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
+
 
 
 @Entity
@@ -18,13 +18,10 @@ public class Document {
     private String description;
     private Timestamp createtionDate;
     private Timestamp modificationDate;
-
     @ManyToOne
-    @MapsId("userId")
-    private User user;
+    @JoinColumn(name = "user_id")
+    private User creator;
 
-    @OneToMany(mappedBy = "document")
-    private List<Comment> comments;
     private Blob pdfFile;
 
     public Document() {
@@ -75,20 +72,12 @@ public class Document {
         this.modificationDate = modificationDate;
     }
 
-    public User getUser() {
-        return user;
+    public User getCreator() {
+        return creator;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     public Blob getPdfFile() {
@@ -107,8 +96,6 @@ public class Document {
                 ", description='" + description + '\'' +
                 ", createtionDate=" + createtionDate +
                 ", modificationDate=" + modificationDate +
-                ", creator=" + user +
-                ", comments=" + comments +
                 '}';
     }
 }

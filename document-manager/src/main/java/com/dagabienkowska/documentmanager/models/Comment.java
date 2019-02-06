@@ -11,13 +11,14 @@ public class Comment {
     private long commId;
     private String content;
 
-    @ManyToOne
-    @MapsId("userId")
-    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User author;
 
     @ManyToOne
-    @MapsId("docId")
-    private Document document;
+    @JoinColumn(name = "doc_id")
+    private Document commentTo;
 
     public Comment(String content) {
         this.content = content;
@@ -42,20 +43,20 @@ public class Comment {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
-    public Document getDocument() {
-        return document;
+    public Document getCommentTo() {
+        return commentTo;
     }
 
-    public void setDocument(Document document) {
-        this.document = document;
+    public void setCommentTo(Document commentTo) {
+        this.commentTo = commentTo;
     }
 
     @Override
@@ -63,7 +64,6 @@ public class Comment {
         return "Comment{" +
                 "commId=" + commId +
                 ", content='" + content + '\'' +
-                ", userId=" + user +
                 '}';
     }
 }

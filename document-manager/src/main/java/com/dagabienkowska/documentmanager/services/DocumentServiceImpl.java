@@ -1,6 +1,7 @@
 package com.dagabienkowska.documentmanager.services;
 
 import com.dagabienkowska.documentmanager.models.Document;
+import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.repository.DocumentRepository;
 import com.dagabienkowska.documentmanager.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,13 @@ public class DocumentServiceImpl implements DocumentService{
 
     private final UserRepository userRepository;
     private final DocumentRepository documentRepository;
+    private final SecurityService securityService;
     private static final Logger LOGGER = Logger.getLogger(DocumentServiceImpl.class.getName());
 
-    public DocumentServiceImpl(UserRepository userRepository, DocumentRepository documentRepository) {
+    public DocumentServiceImpl(UserRepository userRepository, DocumentRepository documentRepository, SecurityService securityService) {
         this.userRepository = userRepository;
         this.documentRepository = documentRepository;
+        this.securityService = securityService;
     }
 
     @Override
@@ -27,6 +30,13 @@ public class DocumentServiceImpl implements DocumentService{
         document.setCreatetionDate(timestamp);
         document.setModificationDate(timestamp);
 
+        String username = securityService.findLoggedInUsername();
+        LOGGER.log(Level.INFO, "username " +username);
+
+        User user = userRepository.findByUsername(username);
+        document.setCreator(user);
+        LOGGER.log(Level.INFO, "added creator " +user.toString());
+        
         documentRepository.save(document);
         LOGGER.log(Level.INFO, "added new document");
 

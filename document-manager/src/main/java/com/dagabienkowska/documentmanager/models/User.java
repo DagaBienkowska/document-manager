@@ -29,12 +29,6 @@ public class User {
 
     private String status;
 
-    @OneToMany
-    private List<Document> documents;
-
-    @OneToMany(mappedBy = "content")
-    private List<Comment> commnets;
-
     public User() {
     }
 
@@ -101,21 +95,6 @@ public class User {
         this.status = status;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
-
-    public List<Comment> getCommnets() {
-        return commnets;
-    }
-
-    public void setCommnets(List<Comment> commnets) {
-        this.commnets = commnets;
-    }
 
     @Override
     public String toString() {
