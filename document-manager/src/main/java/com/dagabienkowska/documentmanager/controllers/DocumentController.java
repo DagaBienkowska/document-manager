@@ -6,7 +6,6 @@ import com.dagabienkowska.documentmanager.models.Document;
 import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.repository.DocumentRepository;
 import com.dagabienkowska.documentmanager.services.*;
-
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,16 +30,18 @@ public class DocumentController {
     private final DocumentService documentService;
     private final DocumentValidator documentValidator;
     private final SecurityService securityService;
+    private final DocumentRepository documentRepository;
     private final DBFileStorageService dbFileStorageService;
     private static final Logger LOGGER = Logger.getLogger(DocumentController.class.getName());
 
     public DocumentController(UserService userService, DocumentService documentService,
                               DocumentValidator documentValidator, SecurityService securityService,
-                              DocumentRepository documentRepository, DBFileStorageService dbFileStorageService) {
+                              DocumentRepository documentRepository, DocumentRepository documentRepository1, DBFileStorageService dbFileStorageService) {
         this.userService = userService;
         this.documentService = documentService;
         this.documentValidator = documentValidator;
         this.securityService = securityService;
+        this.documentRepository = documentRepository1;
         this.dbFileStorageService = dbFileStorageService;
 
     }
@@ -50,6 +52,7 @@ public class DocumentController {
         model.addAttribute("documentForm", new Document());
         return "addDocument";
     }
+
     @RequestMapping(value = "/addDocument", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String addDocument(@ModelAttribute("documentForm") Document documentForm, BindingResult bindingResult,
                               @RequestParam("file")MultipartFile multipartFile, Model model){
@@ -94,5 +97,14 @@ public class DocumentController {
 
         return "redirect:/welcome";
     }
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
+    public String documentManager(Map<String, Object> map){
 
+        try {
+            map.put("documentList", documentRepository.findAll());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "welcome";
+    }
 }

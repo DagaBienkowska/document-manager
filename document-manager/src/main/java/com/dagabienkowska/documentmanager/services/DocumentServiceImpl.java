@@ -27,17 +27,7 @@ public class DocumentServiceImpl implements DocumentService{
     @Override
     @Transactional
     public void addDocument(Document document) {
-        /*Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        document.setCreationDate(timestamp);
-        document.setModificationDate(timestamp);
 
-        String username = securityService.findLoggedInUsername();
-        LOGGER.log(Level.INFO, "username " +username);
-
-        User user = userRepository.findByUsername(username);
-        document.setCreator(user);
-        LOGGER.log(Level.INFO, "added creator " +user.toString());
-*/
         documentRepository.save(document);
         LOGGER.log(Level.INFO, "added new document");
 
