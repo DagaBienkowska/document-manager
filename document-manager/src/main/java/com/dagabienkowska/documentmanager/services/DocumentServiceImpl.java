@@ -1,21 +1,12 @@
 package com.dagabienkowska.documentmanager.services;
 
-import com.dagabienkowska.documentmanager.models.DBFile;
 import com.dagabienkowska.documentmanager.models.Document;
-import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.repository.DocumentRepository;
 import com.dagabienkowska.documentmanager.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -41,5 +41,6 @@ public class DocumentValidator implements Validator {
         if (document.getDescription().length() < 2){
             errors.rejectValue("description", "Size.documentForm.description");
         }
+
     }
 }

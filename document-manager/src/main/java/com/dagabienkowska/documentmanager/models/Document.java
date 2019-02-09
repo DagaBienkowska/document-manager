@@ -21,7 +21,9 @@ public class Document {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User creator;
-    @OneToOne(mappedBy = "document", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "file_id")
     private DBFile pdfFile;
 
 

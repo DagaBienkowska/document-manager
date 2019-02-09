@@ -23,10 +23,8 @@
             </div>
         </spring:bind>
 
-        <spring:bind path="pdfFile">
-            <form:input path="pdfFile" type="file" name="pdfFile"></form:input>
-        </spring:bind>
-
+        <input type="file" name="file" />
+        <span>${error}</span>
         <button type="submit">Submit</button>
     </form:form>
 </body>

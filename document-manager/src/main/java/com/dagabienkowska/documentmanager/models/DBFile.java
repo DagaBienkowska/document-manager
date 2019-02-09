@@ -8,7 +8,7 @@ public class DBFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long fileId;
+    private Long pdfId;
 
     private String fileName;
 
@@ -16,10 +16,6 @@ public class DBFile {
 
     @Lob
     private byte[] data;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doc_id")
-    private Document document;
 
     public DBFile() {
     }
@@ -54,19 +50,12 @@ public class DBFile {
         this.data = data;
     }
 
-    public Long getFileId() {
-        return fileId;
+    public Long getPdfId() {
+        return pdfId;
     }
 
-    public void setFileId(Long fileId) {
-        this.fileId = fileId;
+    public void setPdfId(Long pdfId) {
+        this.pdfId = pdfId;
     }
 
-    public Document getDocument() {
-        return document;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
-    }
 }

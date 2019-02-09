@@ -42,7 +42,6 @@ public class DocumentController {
         this.securityService = securityService;
         this.dbFileStorageService = dbFileStorageService;
 
-
     }
 
 
@@ -52,10 +51,22 @@ public class DocumentController {
         return "addDocument";
     }
     @RequestMapping(value = "/addDocument", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String addDocument(@ModelAttribute("documentForm") Document documentForm,
-                              BindingResult bindingResult,
-                              @RequestParam("pdfFile")MultipartFile multipartFile){
+    public String addDocument(@ModelAttribute("documentForm") Document documentForm, BindingResult bindingResult,
+                              @RequestParam("file")MultipartFile multipartFile, Model model){
+
         DBFile dbFile = dbFileStorageService.storeFile(multipartFile);
+
+        if (multipartFile.isEmpty()){
+            model.addAttribute("error", "No file attached");
+
+            return "addDocument";
+        }
+
+        if (!multipartFile.getContentType().equalsIgnoreCase("application/pdf") ){
+            model.addAttribute("error", "Attached file is not a pdf file");
+
+            return "addDocument";
+        }
 
         documentValidator.validate(documentForm, bindingResult);
 
@@ -78,7 +89,7 @@ public class DocumentController {
         User user = userService.findByUsername(username);
         documentForm.setCreator(user);
         LOGGER.log(Level.INFO, "added creator " +user.toString());
-        dbFile.setDocument(documentForm);
+        documentForm.setPdfFile(dbFile);
         documentService.addDocument(documentForm);
 
         return "redirect:/welcome";
