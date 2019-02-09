@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,12 +58,16 @@ public class DocumentController {
         DBFile dbFile = dbFileStorageService.storeFile(multipartFile);
 
         documentValidator.validate(documentForm, bindingResult);
-/*
+
         if (bindingResult.hasErrors()){
             LOGGER.log(Level.INFO, "Error ");
+            List<FieldError> errors = bindingResult.getFieldErrors();
+            for (FieldError error : errors ) {
+                System.out.println (error.getObjectName() + " - " + error.getDefaultMessage());
+            }
             return "addDocument";
         }
-*/
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         documentForm.setCreationDate(timestamp);
         documentForm.setModificationDate(timestamp);

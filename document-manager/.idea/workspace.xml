@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="141025bb-558e-4ff9-a87c-048fac3a41ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/DBFileRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DBFileStorageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DBFileStorageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/DocumentManagerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/DocumentManagerApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/controllers/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/controllers/DocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/Document.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/DocumentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/DocumentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DocumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DocumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DocumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addFile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addDocument.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/DocumentManagerApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/DocumentManagerApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/controllers/DocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/controllers/DocumentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/models/Document.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/models/Document.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/repository/DocumentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/repository/DocumentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/services/DocumentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/services/DocumentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/services/DocumentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dagabienkowska/documentmanager/services/DocumentServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/controllers/DocumentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="63" column="2" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
+            <state relative-caret-position="245">
+              <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/Document.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
+            <state relative-caret-position="755">
               <caret line="83" column="32" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-98">
-              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="119">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding>
                 <element signature="e#1069#1070#0" expanded="true" />
                 <element signature="e#1098#1099#0" expanded="true" />
@@ -87,6 +66,15 @@
                 <element signature="e#1294#1295#0" expanded="true" />
                 <element signature="e#1334#1335#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -199,16 +187,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/DocumentRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addFile.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/repository/DBFileRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DBFileStorageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DBFileStorageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DocumentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/services/DocumentServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/Document.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addDocument.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/controllers/DocumentController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java" />
       </list>
     </option>
   </component>
@@ -420,12 +408,12 @@
       <workItem from="1549544877340" duration="14876000" />
       <workItem from="1549634049683" duration="5141000" />
       <workItem from="1549645390371" duration="14449000" />
-      <workItem from="1549699319438" duration="995000" />
+      <workItem from="1549699319438" duration="1828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96173000" />
+    <option name="totallyTimeSpent" value="97006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -442,7 +430,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
       <window_info anchor="bottom" id="Spring" order="2" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.38627186" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.33781964" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -730,13 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -801,9 +782,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addDocument.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/controllers/DocumentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/Document.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
+        <state relative-caret-position="755">
           <caret line="83" column="32" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -814,10 +812,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/models/DBFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        <state relative-caret-position="119">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding>
             <element signature="e#1069#1070#0" expanded="true" />
             <element signature="e#1098#1099#0" expanded="true" />
@@ -827,23 +832,6 @@
             <element signature="e#1244#1245#0" expanded="true" />
             <element signature="e#1294#1295#0" expanded="true" />
             <element signature="e#1334#1335#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addDocument.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dagabienkowska/documentmanager/controllers/DocumentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="63" column="2" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

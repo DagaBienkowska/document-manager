@@ -8,7 +8,7 @@ public class DBFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long fileid;
+    private Long fileId;
 
     private String fileName;
 
@@ -54,12 +54,12 @@ public class DBFile {
         this.data = data;
     }
 
-    public Long getFileid() {
-        return fileid;
+    public Long getFileId() {
+        return fileId;
     }
 
-    public void setFileid(Long fileid) {
-        this.fileid = fileid;
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
     }
 
     public Document getDocument() {
