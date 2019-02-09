@@ -1,5 +1,6 @@
 package com.dagabienkowska.documentmanager;
 
+import com.dagabienkowska.documentmanager.models.Document;
 import com.dagabienkowska.documentmanager.models.Role;
 import com.dagabienkowska.documentmanager.models.User;
 import com.dagabienkowska.documentmanager.repository.CommentRepository;
@@ -11,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -50,6 +52,17 @@ public class DocumentManagerApplication implements CommandLineRunner {
 
 		user.setStatus("active");
 		userRepository.save(user);
+
+
+		for (int i = 1; i < 11; i++){
+			Document doc = new Document("file"+i, "desc");
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			doc.setCreationDate(timestamp);
+			doc.setModificationDate(timestamp);
+			doc.setCreator(user);
+			documentRepository.save(doc);
+		}
+
 
 		System.out.println(userService.getAllUsers().toString());
 

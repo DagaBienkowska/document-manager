@@ -16,13 +16,14 @@ public class Document {
     private long docId;
     private String fileName;
     private String description;
-    private Timestamp createtionDate;
+    private Timestamp creationDate;
     private Timestamp modificationDate;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User creator;
+    @OneToOne(mappedBy = "document", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private DBFile pdfFile;
 
-    private Blob pdfFile;
 
     public Document() {
     }
@@ -56,12 +57,12 @@ public class Document {
         this.description = description;
     }
 
-    public Date getCreatetionDate() {
-        return createtionDate;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreatetionDate(Timestamp createtionDate) {
-        this.createtionDate = createtionDate;
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
     }
 
     public Date getModificationDate() {
@@ -80,11 +81,11 @@ public class Document {
         this.creator = creator;
     }
 
-    public Blob getPdfFile() {
+    public DBFile getPdfFile() {
         return pdfFile;
     }
 
-    public void setPdfFile(Blob pdfFile) {
+    public void setPdfFile(DBFile pdfFile) {
         this.pdfFile = pdfFile;
     }
 
@@ -94,7 +95,7 @@ public class Document {
                 "docId=" + docId +
                 ", fileName='" + fileName + '\'' +
                 ", description='" + description + '\'' +
-                ", createtionDate=" + createtionDate +
+                ", creationDate=" + creationDate +
                 ", modificationDate=" + modificationDate +
                 '}';
     }

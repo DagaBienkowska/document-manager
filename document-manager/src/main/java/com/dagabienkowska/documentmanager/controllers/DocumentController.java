@@ -1,19 +1,23 @@
 package com.dagabienkowska.documentmanager.controllers;
 
 import com.dagabienkowska.documentmanager.components.DocumentValidator;
+import com.dagabienkowska.documentmanager.models.DBFile;
 import com.dagabienkowska.documentmanager.models.Document;
 import com.dagabienkowska.documentmanager.models.User;
-import com.dagabienkowska.documentmanager.services.DocumentService;
-import com.dagabienkowska.documentmanager.services.SecurityService;
-import com.dagabienkowska.documentmanager.services.UserService;
+import com.dagabienkowska.documentmanager.repository.DocumentRepository;
+import com.dagabienkowska.documentmanager.services.*;
+
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.security.Principal;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,40 +28,54 @@ public class DocumentController {
     private final DocumentService documentService;
     private final DocumentValidator documentValidator;
     private final SecurityService securityService;
+    private final DBFileStorageService dbFileStorageService;
     private static final Logger LOGGER = Logger.getLogger(DocumentController.class.getName());
 
-    public DocumentController(UserService userService, DocumentService documentService, DocumentValidator documentValidator, SecurityService securityService) {
+    public DocumentController(UserService userService, DocumentService documentService,
+                              DocumentValidator documentValidator, SecurityService securityService,
+                              DocumentRepository documentRepository, DBFileStorageService dbFileStorageService) {
         this.userService = userService;
         this.documentService = documentService;
         this.documentValidator = documentValidator;
         this.securityService = securityService;
+        this.dbFileStorageService = dbFileStorageService;
+
+
     }
 
 
-    @RequestMapping(value = "addFile", method = RequestMethod.GET)
-    public String addFile(Model model){
+    @RequestMapping(value = "/addDocument", method = RequestMethod.GET)
+    public String addDocument(Model model){
         model.addAttribute("documentForm", new Document());
-        return "addFile";
+        return "addDocument";
     }
-    @RequestMapping(value = "/addFile", method = RequestMethod.POST)
-    public String addFile(@ModelAttribute("documentForm") Document documentForm, BindingResult bindingResult, Model model,
-                          Principal principal){
+    @RequestMapping(value = "/addDocument", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String addDocument(@ModelAttribute("documentForm") Document documentForm,
+                              BindingResult bindingResult,
+                              @RequestParam("pdfFile")MultipartFile multipartFile){
+        DBFile dbFile = dbFileStorageService.storeFile(multipartFile);
 
         documentValidator.validate(documentForm, bindingResult);
-
-        if (bindingResult.hasErrors()){
-            return "addFile";
-        }
 /*
-        String username = principal.getName();
-        LOGGER.log(Level.INFO, "got username " + username);
+        if (bindingResult.hasErrors()){
+            LOGGER.log(Level.INFO, "Error ");
+            return "addDocument";
+        }
+*/
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        documentForm.setCreationDate(timestamp);
+        documentForm.setModificationDate(timestamp);
+
+        String username = securityService.findLoggedInUsername();
+        LOGGER.log(Level.INFO, "username " +username);
+
         User user = userService.findByUsername(username);
-        LOGGER.log(Level.INFO, "got user " + user.toString());
-        LOGGER.log(Level.INFO, "cos" + documentForm.toString());
         documentForm.setCreator(user);
-        */
+        LOGGER.log(Level.INFO, "added creator " +user.toString());
+        dbFile.setDocument(documentForm);
         documentService.addDocument(documentForm);
 
         return "redirect:/welcome";
     }
+
 }
