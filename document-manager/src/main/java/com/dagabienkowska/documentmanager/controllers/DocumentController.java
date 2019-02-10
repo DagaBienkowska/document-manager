@@ -30,18 +30,17 @@ public class DocumentController {
     private final DocumentService documentService;
     private final DocumentValidator documentValidator;
     private final SecurityService securityService;
-    private final DocumentRepository documentRepository;
     private final DBFileStorageService dbFileStorageService;
     private static final Logger LOGGER = Logger.getLogger(DocumentController.class.getName());
 
     public DocumentController(UserService userService, DocumentService documentService,
                               DocumentValidator documentValidator, SecurityService securityService,
-                              DocumentRepository documentRepository, DocumentRepository documentRepository1, DBFileStorageService dbFileStorageService) {
+                              DBFileStorageService dbFileStorageService) {
         this.userService = userService;
         this.documentService = documentService;
         this.documentValidator = documentValidator;
         this.securityService = securityService;
-        this.documentRepository = documentRepository1;
+
         this.dbFileStorageService = dbFileStorageService;
 
     }
@@ -50,6 +49,7 @@ public class DocumentController {
     @RequestMapping(value = "/addDocument", method = RequestMethod.GET)
     public String addDocument(Model model){
         model.addAttribute("documentForm", new Document());
+
         return "addDocument";
     }
 
@@ -97,14 +97,5 @@ public class DocumentController {
 
         return "redirect:/welcome";
     }
-    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String documentManager(Map<String, Object> map){
 
-        try {
-            map.put("documentList", documentRepository.findAll());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "welcome";
-    }
 }

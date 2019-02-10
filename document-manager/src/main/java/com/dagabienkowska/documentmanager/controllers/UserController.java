@@ -1,12 +1,10 @@
 package com.dagabienkowska.documentmanager.controllers;
 
 import com.dagabienkowska.documentmanager.components.UserValidator;
-import com.dagabienkowska.documentmanager.models.Document;
 import com.dagabienkowska.documentmanager.models.User;
+import com.dagabienkowska.documentmanager.repository.DocumentRepository;
 import com.dagabienkowska.documentmanager.services.SecurityService;
 import com.dagabienkowska.documentmanager.services.UserService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,17 +12,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Map;
+
 @Controller
 public class UserController {
 
     private final UserService userService;
     private final SecurityService securityService;
     private final UserValidator userValidator;
+    private final DocumentRepository documentRepository;
 
-    public UserController(UserService userService, SecurityService securityService, UserValidator userValidator) {
+    public UserController(UserService userService, SecurityService securityService, UserValidator userValidator, DocumentRepository documentRepository) {
         this.userService = userService;
         this.securityService = securityService;
         this.userValidator = userValidator;
+        this.documentRepository = documentRepository;
     }
 
 
@@ -66,7 +68,15 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model){
+    public String welcome(Model model, Map<String, Object> map){
+
+
+        try {
+            map.put("documentList", documentRepository.findAll());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return "welcome";
     }
 }

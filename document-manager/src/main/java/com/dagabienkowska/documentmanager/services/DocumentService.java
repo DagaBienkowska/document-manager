@@ -4,7 +4,9 @@ import com.dagabienkowska.documentmanager.models.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+
+
+import java.util.List;
 
 
 @Service
@@ -21,5 +23,7 @@ public interface DocumentService {
     Document findByFileName(String fileName);
 
     Page<Document> documentList(Pageable pageable);
+
+    List<Document> getAllDocuments();
 
 }

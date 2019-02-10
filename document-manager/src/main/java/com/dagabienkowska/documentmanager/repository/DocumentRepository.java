@@ -14,4 +14,5 @@ public interface DocumentRepository extends JpaRepository<Document, Long> {
     List<Document> findByCreator(String username);
 
     Document findAllByCreator(String username);
+
 }

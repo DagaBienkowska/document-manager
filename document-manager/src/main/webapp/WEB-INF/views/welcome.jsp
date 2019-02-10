@@ -15,6 +15,37 @@
         <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a> </h2>
     </c:if>
 
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created by</th>
+            <th>Creation Date</th>
+            <th>Last Modification</th>
+            <th></th>
+        </tr>
+        <c:forEach items="${documentList}" var="document">
+            <tr>
+                <td>${document.docId}</td>
+                <td>${document.fileName}</td>
+                <td>${document.description}</td>
+                <td>${document.creator.username}</td>
+                <td>${document.creationDate}</td>
+                <td>${document.modificationDate}</td>
+                <td>
+                    <form id="showDocument" method="post" action="${contextPath}/showDocument">
+                        <input type="hidden" name="docId" value="${document.fileName}">
+                        <a href="/showDocument">
+                        <button type="submit">Show(${document.fileName})</button></a>
+                    </form>
+
+                </td>
+            </tr>
+        </c:forEach>
+
+    </table>
+
     <ul>
         <li><a href="${contextPath}/addDocument">Add new file</a></li>
         <li>Show Your files</li>
