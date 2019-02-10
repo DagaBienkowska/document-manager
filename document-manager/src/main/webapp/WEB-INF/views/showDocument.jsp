@@ -15,8 +15,9 @@
         <th>Created by</th>
         <th>Creation Date</th>
         <th>Last Modification</th>
+        <th>Pdf file</th>
     </tr>
-    <c:forEach items="${documentList}" var="document">
+
         <tr>
             <td>${document.docId}</td>
             <td>${document.fileName}</td>
@@ -25,7 +26,6 @@
             <td>${document.creationDate}</td>
             <td>${document.modificationDate}</td>
         </tr>
-    </c:forEach>
 
 </table>
 </body>

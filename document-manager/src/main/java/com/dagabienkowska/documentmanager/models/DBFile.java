@@ -1,6 +1,7 @@
 package com.dagabienkowska.documentmanager.models;
 
 import javax.persistence.*;
+import java.io.InputStream;
 
 @Entity
 @Table(name = "pdf_files")
@@ -42,7 +43,7 @@ public class DBFile {
         this.fileType = fileType;
     }
 
-    public byte[] getData() {
+    public InputStream getData() {
         return data;
     }
 

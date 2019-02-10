@@ -34,10 +34,12 @@
                 <td>${document.creationDate}</td>
                 <td>${document.modificationDate}</td>
                 <td>
+
+
                     <form id="showDocument" method="post" action="${contextPath}/showDocument">
-                        <input type="hidden" name="docId" value="${document.fileName}">
+                        <input type="hidden" name="docName" value="${document.fileName}">
                         <a href="/showDocument">
-                        <button type="submit">Show(${document.fileName})</button></a>
+                        <button type="submit">Show</button></a>
                     </form>
 
                 </td>
