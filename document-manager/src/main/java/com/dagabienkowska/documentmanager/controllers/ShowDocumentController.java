@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Map;
 import java.util.logging.Level;
@@ -40,7 +41,10 @@ public class ShowDocumentController {
 
     @RequestMapping(value = "showDocument", method = RequestMethod.POST)
     public String showDocument(@RequestParam("docName") String docName, Map<String, Object> map, HttpServletResponse response){
-        
+
+        Document document = documentService.findByFileName(docName);
+        InputStream dbFile = document.getPdfFile().getData();
+
         try {
             map.put("document", documentService.findByFileName(docName));
             LOGGER.log(Level.INFO, "Fetched file " + docName.toString());
